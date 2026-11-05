@@ -1,0 +1,145 @@
+*{
+    margin: 0;   /* Remove a margem externa padrão que o navegador aplica aos elementos */
+    padding: 0;     /* Remove o espaçamento interno padrão que o navegador aplica aos elementos */
+    box-sizing: border-box;  /* Muda a forma como a largura e altura são calculadas.*/
+}
+
+body{
+   background-color: black; 
+}
+
+header{
+    padding: 1.25rem;/* 20px */
+    outline: .125rem solid white; /* contorno de 2px */
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+   & #logo{
+    width: 2.5rem; /* 40px */
+    height: 2.5rem; /* 40px */
+   }
+
+   & #texto-logo{
+    color: white;
+     font-family: "Poppins", sans-serif;
+     font-size: 2.5rem;
+     font-weight: bolder;
+     & span{
+        color: yellow;
+     }
+   }
+}
+
+
+main {
+    display: flex; /* Organiza as seções lado a lado */
+    align-items: center; /* Centraliza verticalmente */
+    justify-content: space-between; /* Distribui o espaço horizontal */
+    gap: 3rem; /* Espaçamento de 48px */
+    min-height: calc(100vh - 5rem); /* Altura disponível descontando o header */
+    padding: 0 8% 2.5rem; /* Remove o espaço superior, mantém 8% nas laterais e 40px abaixo */
+
+    & .apresentacao {
+        display: flex; /* Ativa o Flexbox */
+        flex-direction: column; /* Organiza os textos em coluna */
+        align-items: flex-start; /* Alinha à esquerda */
+        gap: 1.25rem; /* Espaçamento de 20px */
+        max-width: 34.375rem; /* Largura máxima de 550px */
+
+        & .subtitulo {
+            color: #ffcc00; /* Cor amarela */
+            font-size: .875rem; /* 14px */
+            font-weight: 600; /* Espessura da fonte */
+            letter-spacing: .125rem; /* Espaçamento de 2px */
+        }
+
+        & h1 {
+            color: white; /* Cor branca */
+            font-size: clamp(2.5rem, 5vw, 4.5rem); /* Tamanho responsivo */
+            font-weight: 700; /* Negrito */
+            line-height: 1.1; /* Altura da linha */
+
+            & span {
+                color: #ffcc00; /* Destaca Lâmpada */
+            }
+        }
+
+        & .descricao {
+            color: #a9abb1; /* Cinza claro */
+            font-size: 1.125rem; /* 18px */
+            line-height: 1.6; /* Altura da linha */
+            max-width: 26.25rem; /* Largura máxima */
+        }
+    }
+
+    & .area-lampada {
+        display: flex; /* Ativa o Flexbox */
+        justify-content: center; /* Centraliza horizontalmente */
+        align-items: center; /* Centraliza verticalmente */
+        flex: 1; /* Ocupa o espaço restante */
+        min-width: 0; /* Evita transbordamento */
+        margin-top: -1.6875rem; /* Sobe a lâmpada 24px em relação à posição original */
+
+        & #imagem-lampada {
+            display: block; /* Remove o espaço inline */
+            width: 100%; /* Largura adaptável */
+            max-width: 28rem; /* Máximo de 448px */
+            height: auto; /* Preserva a proporção */
+            object-fit: contain; /* Evita distorção */
+        }
+
+        & .controle-lampada{
+    display: flex; /* Organiza os ícones e o botão lado a lado */
+    align-items: center; /* Centraliza os elementos verticalmente */
+    justify-content: center; /* Centraliza o conjunto horizontalmente */
+    gap: 1.25rem; /* Espaçamento de 20px entre os elementos */
+    margin-top: 1rem; /* Cria um espaço de 16px abaixo da imagem da lâmpada */
+        }
+
+            & .icone-estado {
+        width: 2rem; /* Define a largura do ícone em 32px */
+        height: 2rem; /* Define a altura do ícone em 32px */
+        object-fit: contain; /* Mantém a proporção da imagem */
+        display: block; /* Remove espaços extras de imagem inline */
+    }
+
+      
+        & #interruptor {
+            width: 6rem; /* Define a largura do botão em 96px */
+            height: 3rem; /* Define a altura do botão em 48px */
+            background-color: #28231a; /* Cor de fundo do interruptor desligado */
+            border: .125rem solid #ffcc00; /* Adiciona borda amarela de 2px */
+            border-radius: 2rem; /* Deixa o botão arredondado */
+            cursor: pointer; /* Mostra a mãozinha ao passar o mouse */
+            position: relative; /* Serve de referência para o círculo interno */
+            transition: background-color .3s ease; /* Suaviza a mudança de cor */
+
+            &:focus-visible {
+                outline: .125rem solid white; /* Destaca o botão ao navegar pelo teclado */
+                outline-offset: .25rem; /* Afasta o contorno do botão */
+            }
+
+            &::before {
+                content: ""; /* Cria o círculo interno do interruptor */
+                position: absolute; /* Posiciona o círculo dentro do botão */
+                width: 2.25rem; /* Define a largura do círculo em 36px */
+                height: 2.25rem; /* Define a altura do círculo em 36px */
+                background-color: white; /* Define a cor branca do círculo */
+                border-radius: 50%; /* Transforma o elemento em círculo */
+                left: .375rem; /* Posiciona o círculo à esquerda */
+                top: .25rem; /* Posiciona o círculo verticalmente */
+                transition: transform .3s ease; /* Suaviza o movimento do círculo */
+            }
+
+            &[aria-pressed="true"] {
+                background-color: #ffcc00; /* Altera o fundo para amarelo quando ligado */
+
+                &::before {
+                    transform: translateX(3rem); /* Move o círculo 48px para a direita */
+                }
+            }
+        }
+
+    } /* Fecha .controle-lampada */
+
+} /* Fecha .area-lampada */
